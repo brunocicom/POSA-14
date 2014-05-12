@@ -28,14 +28,10 @@ class SimpleAtomicLong
      */
     public SimpleAtomicLong(long initialValue)
     {
-<<<<<<< HEAD
         // TODO - you fill in here : ok
     	mRWLock.writeLock().lock();
     	mValue = initialValue;
     	mRWLock.writeLock().unlock();
-=======
-        // TODO - you fill in here
->>>>>>> f380ad8bf6275d1b710891636e048f8f447cb687
     }
 
     /**
@@ -46,14 +42,11 @@ class SimpleAtomicLong
     public long get()
     {
         long value;
-<<<<<<< HEAD
+
         // TODO - you fill in here, using a readLock() : ok
         mRWLock.readLock().lock();
         value = mValue;
         mRWLock.readLock().unlock();
-=======
-        // TODO - you fill in here, using a readLock()
->>>>>>> f380ad8bf6275d1b710891636e048f8f447cb687
         return value;
     }
 
@@ -65,14 +58,11 @@ class SimpleAtomicLong
     public long decrementAndGet()
     {
         long value;
-<<<<<<< HEAD
+
         // TODO - you fill in here, using a writeLock() : ok
         mRWLock.writeLock().lock();
         value = --mValue;
         mRWLock.writeLock().unlock();
-=======
-        // TODO - you fill in here, using a writeLock()
->>>>>>> f380ad8bf6275d1b710891636e048f8f447cb687
         return value;
     }
 
@@ -84,15 +74,12 @@ class SimpleAtomicLong
     public long getAndIncrement()
     {
         long value;
-<<<<<<< HEAD
+
         // TODO - you fill in here, using a writeLock() : ok
         mRWLock.writeLock().lock();
         value = mValue;
         mValue++;
         mRWLock.writeLock().unlock();
-=======
-        // TODO - you fill in here, using a writeLock()
->>>>>>> f380ad8bf6275d1b710891636e048f8f447cb687
         return value;
     }
 
@@ -104,15 +91,11 @@ class SimpleAtomicLong
     public long getAndDecrement()
     {
         long value;
-<<<<<<< HEAD
         // TODO - you fill in here, using a writeLock() : ok
         mRWLock.writeLock().lock();
         value = mValue;
         mValue--;
         mRWLock.writeLock().unlock();
-=======
-        // TODO - you fill in here, using a writeLock()
->>>>>>> f380ad8bf6275d1b710891636e048f8f447cb687
         return value;
     }
 
@@ -124,14 +107,10 @@ class SimpleAtomicLong
     public long incrementAndGet()
     {
         long value;
-<<<<<<< HEAD
         // TODO - you fill in here, using a writeLock() : ok
         mRWLock.writeLock().lock();
         value = ++mValue;
         mRWLock.writeLock().unlock();
-=======
-        // TODO - you fill in here, using a writeLock()
->>>>>>> f380ad8bf6275d1b710891636e048f8f447cb687
         return value;
     }
 }
