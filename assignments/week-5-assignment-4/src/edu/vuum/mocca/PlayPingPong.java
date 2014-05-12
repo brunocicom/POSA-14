@@ -1,9 +1,9 @@
 package edu.vuum.mocca;
 
-import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Semaphore;
 
 /**
  * @class PlayPingPong
@@ -22,7 +22,7 @@ public class PlayPingPong implements Runnable
     private static volatile int mMaxIterations;
 
     /** Maximum number of iterations per "turn" (defaults to 1). */
-    private static volatile int mMaxTurns = 1;
+    private static int mMaxTurns = 1;
 
     /**
      * Keeps track of the platform that we're running on, e.g.,
@@ -166,7 +166,7 @@ public class PlayPingPong implements Runnable
     static class PingPongThreadCond extends PingPongThread 
     {
         /**
-         * Semaphores that schedule the ping/pong algorithm.
+         * Conditions that schedule the ping/pong algorithm.
          */
         private Condition mConds[] = new Condition[2];
 
