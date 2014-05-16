@@ -186,7 +186,7 @@ public class SynchronizedQueue {
                         System.out.println("Exception " + e.toString()
                                            + " occurred in consumerRunnable");
                         // Indicate a timeout.
-                        mProducerCounter = TIMEOUT_OCCURRED;
+                        mConsumerCounter = TIMEOUT_OCCURRED;
                         return;
                     } catch (Exception e) {
                         System.out.println("Exception " + e.toString()
@@ -212,6 +212,10 @@ public class SynchronizedQueue {
         try {
             mQueue = queue;
 
+            // Please make sure to keep all the "TODO" comments in the
+            // code below to make it easy for peer reviewers to find
+            // them.
+
             // TODO - you fill in here to replace the null
             // initialization below to create two Java Threads, one
             // that's passed the producerRunnable and the other that's
@@ -222,7 +226,7 @@ public class SynchronizedQueue {
             // TODO - you fill in here to start the threads. More
             // interesting results will occur if you start the
             // consumer first.
-
+            
             // Give the Threads a chance to run before interrupting
             // them.
             Thread.sleep(100);
@@ -231,7 +235,7 @@ public class SynchronizedQueue {
 
             // TODO - you fill in here to wait for the threads to
             // exit.
-
+            
             // Do some sanity checking to see if the Threads work as
             // expected.
             if (consumer == null 

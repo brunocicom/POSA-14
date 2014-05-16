@@ -1,0 +1,10 @@
+http://docs.oracle.com/javase/tutorial/essential/concurrency/runthread.html
+http://developer.android.com/reference/java/lang/Thread.html
+http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.State.html
+http://en.wikipedia.org/wiki/Volatile_variable#In_Java
+http://stackoverflow.com/questions/8505707/android-best-and-safe-way-to-stop-thread
+http://gee.cs.oswego.edu/dl/cpj/
+
+
+JUnit
+http://www.vogella.com/tutorials/JUnit/article.html#eclipse
