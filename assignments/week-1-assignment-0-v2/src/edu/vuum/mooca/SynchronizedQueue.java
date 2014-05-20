@@ -294,7 +294,7 @@ public abstract class SynchronizedQueue {
      */
     protected static String mTestName = null;
     
-    public static boolean diagnosticsEnabled = false;
+    public static boolean diagnosticsEnabled = true;
 
     protected abstract void createThreads();
     protected abstract void startThreads();
