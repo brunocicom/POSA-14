@@ -24,11 +24,8 @@ class SimpleAtomicLong
      * The ReentrantReadWriteLock used to serialize access to mValue.
      */
     // TODO - replace the null with the appropriate initialization:
-<<<<<<< HEAD
+
     private final ReentrantReadWriteLock mRWLock = new ReentrantReadWriteLock(); //??
-=======
-    private final ReentrantReadWriteLock mRWLock = new ReentrantReadWriteLock();
->>>>>>> 039a9dc8aadd2c87ce8ba9dcc57bf0dfc0990e5b
 
     /**
      * Creates a new SimpleAtomicLong with the given initial value.
@@ -45,11 +42,7 @@ class SimpleAtomicLong
      */
     public long get() {
         // TODO - you fill in here
-<<<<<<< HEAD
         mRWLock.readLock().lock();
-=======
-    	mRWLock.readLock().lock();
->>>>>>> 039a9dc8aadd2c87ce8ba9dcc57bf0dfc0990e5b
         long value = mValue;
         mRWLock.readLock().unlock();
 
@@ -63,11 +56,7 @@ class SimpleAtomicLong
      */
     public long decrementAndGet() {
         // TODO - you fill in here
-<<<<<<< HEAD
-        mRWLock.writeLock().lock();
-=======
     	mRWLock.writeLock().lock();
->>>>>>> 039a9dc8aadd2c87ce8ba9dcc57bf0dfc0990e5b
         long value = --mValue;
         mRWLock.writeLock().unlock();
 
@@ -81,14 +70,8 @@ class SimpleAtomicLong
      */
     public long getAndIncrement() {
         // TODO - you fill in here
-<<<<<<< HEAD
-        mRWLock.writeLock().lock();
-        long value = mValue++;
-//        mValue++;
-=======
     	mRWLock.writeLock().lock();
         long value = mValue++;
->>>>>>> 039a9dc8aadd2c87ce8ba9dcc57bf0dfc0990e5b
         mRWLock.writeLock().unlock();
 
         return value;
@@ -101,17 +84,9 @@ class SimpleAtomicLong
      */
     public long getAndDecrement() {
         // TODO - you fill in here
-<<<<<<< HEAD
-        mRWLock.writeLock().lock();
-        long value = mValue--;
-//        mValue--;
-        mRWLock.writeLock().unlock();
-=======
     	mRWLock.writeLock().lock();
         long value = mValue--;
         mRWLock.writeLock().unlock();
-
->>>>>>> 039a9dc8aadd2c87ce8ba9dcc57bf0dfc0990e5b
         return value;
     }
 
@@ -122,16 +97,9 @@ class SimpleAtomicLong
      */
     public long incrementAndGet() {
         // TODO - you fill in here
-<<<<<<< HEAD
-        mRWLock.writeLock().lock();
-        long value = ++mValue;
-        mRWLock.writeLock().unlock();
-=======
     	mRWLock.writeLock().lock();
         long value = ++mValue;
         mRWLock.writeLock().unlock();
-
->>>>>>> 039a9dc8aadd2c87ce8ba9dcc57bf0dfc0990e5b
         return value;
     }
 }
