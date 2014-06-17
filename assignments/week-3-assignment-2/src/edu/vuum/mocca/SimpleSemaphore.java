@@ -18,7 +18,13 @@ public class SimpleSemaphore {
      * Define a ReentrantLock to protect the critical section.
      */
     // TODO - you fill in here
-	private final Lock lock;
+	
+	/** Feedback 
+	 * A final comment not affecting the score: although it works, 
+	 * it is more accurate declaring "private final ReentrantLock lock;" instead of "private final Lock lock;", 
+	 * since Lock is an interface, not a class.
+	 */
+	private final ReentrantLock lock;
 
     /**
      * Define a Condition that waits while the number of permits is 0.
@@ -31,7 +37,14 @@ public class SimpleSemaphore {
      */
     // TODO - you fill in here.  Make sure that this data member will
     // ensure its values aren't cached by multiple Threads..
-	private int countPermits;
+	
+	/** Feedback
+	 *  You should either have declared countPermits as volatile, or used lock in availablePermits() method. 
+	 *  Currently, it is possible that availablePermits() will return not updated cashed value of countPermits, 
+	 *  which is not good. Otherwise, good job! Also as a note, in acquire() method you used lock(), 
+	 *  but it is better to use lockInterruptibly()
+	 */
+	private volatile int countPermits;
 
     public SimpleSemaphore(int permits, boolean fair) {
         // TODO - you fill in here to initialize the SimpleSemaphore,
@@ -46,9 +59,17 @@ public class SimpleSemaphore {
      * Acquire one permit from the semaphore in a manner that can be
      * interrupted.
      */
+    
+    /** Feedback
+	 * In the acquire method you should have used "lock.lockInterruptibly();" in order to let the 
+	 * lock being unlocked if the thread is interrupted. - You do not define correctly the data member 
+	 * that implements the count of available permits (countPermits): it should be volatile in order 
+	 * to ensure its integrity during the different operations, otherwise you should have protected its 
+	 * access with locks at the method availablePermits.
+	 */
     public void acquire() throws InterruptedException {
         // TODO - you fill in here.
-    	lock.lock();
+    	lock.lockInterruptibly();
     	try{
     		while (countPermits <= 0)
     			isZero.await();
