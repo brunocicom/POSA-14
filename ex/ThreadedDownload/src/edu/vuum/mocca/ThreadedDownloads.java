@@ -276,7 +276,7 @@ public class ThreadedDownloads extends Activity {
     }
     
     /**
-     * @class MyHandler
+     * @class MessageHandler
      *
      * @brief A static inner class that inherits from Handler and uses
      *        its handleMessage() hook method to process Messages sent
@@ -297,7 +297,7 @@ public class ThreadedDownloads extends Activity {
         /**
          * Allows Activity to be garbage collected properly.
          */
-        WeakReference<ThreadedDownloads> mActivity;
+        private WeakReference<ThreadedDownloads> mActivity;
 
         /**
          * Class constructor constructs mActivity as weak reference
@@ -306,10 +306,9 @@ public class ThreadedDownloads extends Activity {
          * @param activity
          *            The corresponding activity
          */
-        MessageHandler(ThreadedDownloads activity) {
+        public MessageHandler(ThreadedDownloads activity) {
             mActivity = new WeakReference<ThreadedDownloads>(activity);
         }
-
         /**
          * Process the specified Messages passed to MessageHandler in
          * the UI Thread. These Messages instruct the Handler to start
@@ -322,27 +321,28 @@ public class ThreadedDownloads extends Activity {
              * Check to see if the activity still exists and return if
              * not.
              */
-            if (mActivity.get() == null) 
+            ThreadedDownloads activity = mActivity.get();
+            if (activity == null) 
                 return;                
 
             switch (msg.what) {
 
             case SHOW_DIALOG:
-                mActivity.get().showDialog("downloading via Handlers and Messages");
+                activity.showDialog("downloading via Handlers and Messages");
                 break;
 
             case DISMISS_DIALOG:
                 /**
                  * Dismiss the progress dialog.
                  */
-                mActivity.get().dismissDialog();
+                activity.dismissDialog();
                 break;
 
             case DISPLAY_IMAGE:
                 /**
                  * Display the downloaded image to the user.
                  */
-                mActivity.get().displayImage((Bitmap) msg.obj);
+                activity.displayImage((Bitmap) msg.obj);
                 break;
             }
         }
@@ -446,7 +446,8 @@ public class ThreadedDownloads extends Activity {
 
         hideKeyboard();
 
-        new DownloadTask().execute(url);
+        // Execute the download using a Thread in the pool of Threads.
+        new DownloadTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
     }
 
     /**
@@ -456,7 +457,7 @@ public class ThreadedDownloads extends Activity {
      *        using AsyncTask.
      */
     private class DownloadTask extends AsyncTask<String, Integer, Bitmap> {
-        /**
+         /**
          * Called by the AsyncTask framework in the UI Thread to
          * perform initialization actions.
          */
