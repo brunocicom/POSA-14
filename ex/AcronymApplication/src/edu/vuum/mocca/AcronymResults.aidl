@@ -12,7 +12,7 @@ interface AcronymResults {
      * This one-way (non-blocking) method allows the
      * AcyronymServiceAsync to return the List of AcronymData results
      * associated with a one-way AcronymRequest.callAcronymRequest()
-     * call. 
+     * call.
      */
     oneway void sendResults(in List<AcronymData> results);
 }
