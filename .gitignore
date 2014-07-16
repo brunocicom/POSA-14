@@ -80,3 +80,9 @@ proguard/
 # Temp files for KDE and other Editor's 
 *~
 
+ex/UniqueIDGeneratorApplication/.classpath
+*.classpath
+*.project
+*.txt
+*.classpath
+*.java
